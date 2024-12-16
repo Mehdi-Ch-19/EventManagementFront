@@ -1,0 +1,40 @@
+<section>
+    <div class="container">
+        @if (type == "participant") {
+            <div class="user signinBx">
+                <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg" alt="" /></div>
+                <div class="formBx">
+                  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm)">
+                    <h2>Sign Up</h2>
+                    <input type="text" name=""formControlName="email" placeholder="email" />
+                    <input type="password" name="" formControlName="password" placeholder="password" />
+                    @if (emailExists) {
+                      <h3 style="color: rgb(245, 33, 33);font-family: system-ui;">Email aleardy exists !! </h3>
+                    }
+                    <button type="submit" class="login">Sign In</button>
+                  </form>
+                </div>
+              </div>
+            
+        }@else if (type == "organizator") {
+            <div class="user signinBx">
+                <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg" alt="" /></div>
+                <div class="formBx">
+                  <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm)">
+                    <h2>Sign Up</h2>
+                    <input type="text" name=""formControlName="name" placeholder="name" />
+                    <input type="text" name=""formControlName="email" placeholder="email" />
+                    <input type="password" name=""formControlName="password" placeholder="password" />
+                    <input type="text" name="phoneNumber" maxlength="10" formControlName="phoneNumber" placeholder="phoneNumber" />
+                    <input type="text" name="website" formControlName="website" placeholder="website" />
+                    @if (emailExists) {
+                      <h3 style="color: rgb(245, 33, 33);font-family: system-ui;">Email aleardy exists !! </h3>
+                    }
+                    <button type="submit" class="login">Sign Up</button>
+                  </form>
+                </div>
+              </div>
+        }
+      
+    </div>
+  </section>

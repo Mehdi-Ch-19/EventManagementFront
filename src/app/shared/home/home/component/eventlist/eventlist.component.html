@@ -1,0 +1,41 @@
+<div class="feature"> 
+   
+<main class="main-content">
+    <h1 class="main-title">Events Managment Demo<br> Software Engenirring</h1>
+    <p class="main-description">
+        Through strategic art direction and webdesign I help companies around the world grow their business.
+    </p>
+    <a href="mailto:hello@gilhuybrecht.com" class="contact-button">testtttttttt</a>
+</main>
+</div>
+<h2 class="Upcoming">Upcoming Events</h2>
+<hr>
+<div class="allevents">
+  @for (event of Upcomingevents; track $index) {
+    <div class="event-card">
+      <div class="event-date">
+        <div class="event-month">{{event.date! | monthtoName}}</div>
+        <div class="event-day">{{event.date | DayPipe}}</div>
+      </div>
+      <div class="event-content">
+        <img
+          src={{event.imageUrl}} 
+          alt="Event Image" 
+          class="event-image"
+        />
+        <div class="event-details">
+          <h2 class="event-title">{{event.title}}</h2>
+          <p class="event-location">
+            {{event.location}}<br />
+            {{event.EventStartTime! | HourPmOrAm}} — {{event.EventEndTime! | HourPmOrAm}} 
+          </p>
+          <p class="event-description">
+            {{event.description}}
+          </p>
+          <a href="#" class="event-link">Book Now -→</a>
+        </div>
+      </div>
+    </div> 
+  }
+   
+</div>

@@ -1,0 +1,48 @@
+<div class="center">
+    <div class="conatiner">
+        <div class="order-wishlist">
+            <div class="titles-conatiner">
+                <button class="titles" >Your Events</button>
+            </div>
+            <div class="content" >
+                <ng-container  >
+                    <table class="content-table">
+                        <thead>
+                          <tr>
+                            <th>Title</th>
+                            <th>Event Date</th>
+                            <th>Location</th>
+                            <th>Purchuase At</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            @if (this.events.length>0) {
+                                @for (e of events; track $index) {
+                                    <tr>
+                                        <td>{{e.event?.title}}</td>
+                                        <td>{{e.event?.date}}</td>
+                                        <td>{{e.event?.location}}</td>
+                                        <td>{{e.purchaseat}}</td>
+                                        @if (e.isConfirmad) {
+                                            <td style="color: #00983a;">Confirmad</td>
+                                        }@else if (e.isConfirmad==false) {
+                                            <td style="color: #b10000;">Not Confirmad</td>
+                                        }
+                                      </tr>
+                                }
+                            }
+                        </tbody>
+                      </table>
+                </ng-container>
+                 
+            </div>            
+        </div>
+        <div class="customer-info">
+          <h5>Particpant info</h5>
+            <app-info [particicpantInfo]="partcicipantInfo" (onParticipantUpdate)="updatePartcipant($event)"></app-info>
+            <button class="logout-btn">Logout</button>
+
+        </div>
+    </div>
+</div>
