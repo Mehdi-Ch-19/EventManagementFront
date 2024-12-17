@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventDto } from '../models/EventDto';
@@ -15,5 +15,10 @@ export class EventService {
   
   getUpcomingEvents():Observable<Responce>{
     return this.http.get<Responce>(environment.apiUrl+this.eventendpoint+"/upcoming")
+  }
+  getEventsByCategory(catname : string):Observable<Responce>{
+    let params = new HttpParams().set('type', catname);
+    return this.http.get<Responce>(environment.apiUrl+this.eventendpoint+"/category",{params:params})
+
   }
 }

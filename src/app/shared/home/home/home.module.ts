@@ -19,8 +19,12 @@ import { DayPipe } from '../../../core/pipes/DayPipe.pipe';
   ],
   imports: [
     CommonModule,
-    
     RouterModule.forChild(Homeroutes)
+  ],
+  exports:[
+    MonthtoNamePipe,
+    HourPmOrAm,
+    DayPipe
   ]
 })
 export class HomeModule { }

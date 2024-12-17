@@ -1,0 +1,50 @@
+/* Tabs Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 100px    ;
+    gap: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    overflow-x: auto;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+.tabs::-webkit-scrollbar{
+    display: flex;
+}
+
+.tab {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+    transition: color 0.3s;
+    font-family: Poppins;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+
+.tab a :hover{
+    background-color: #32ea51;
+}
+a {color:#FF0000;}         /* Unvisited link  */
+a:visited {color:#000000;} /* Visited link    */
+a:hover {color:#3300ff;}   /* Mouse over link */
+a:active {color:#0000FF;}
+.tab a{
+    text-decoration: none;
+}
+.tab.active {
+
+    background-color: #3297ea;
+    color: #000;
+    font-weight: bold;
+}

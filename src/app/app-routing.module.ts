@@ -11,6 +11,10 @@ const routes: Routes = [
 
   },
   {
+    path:"category",loadChildren:()=>import("./feature/category/category.module").then((m)=>m.CategoryModule)
+
+  },
+  {
     path:"**",redirectTo:'home',pathMatch:'full'
   }
 ];

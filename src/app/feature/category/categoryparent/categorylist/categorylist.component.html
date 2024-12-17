@@ -1,0 +1,18 @@
+<div class="allevents">
+    @if (events.length >0) {
+        @for (event of events; track $index) {
+            <app-singlevent [event]="event"></app-singlevent>
+        }
+    }@else {
+        <div class="site">
+            <div class="sketch">
+                <div class="bee-sketch red"></div>
+                <div class="bee-sketch blue"></div>
+            </div>
+        
+        <h1>Sorry 
+            <small>No Events Right Now</small></h1>
+        </div>
+    }
+   
+</div>
