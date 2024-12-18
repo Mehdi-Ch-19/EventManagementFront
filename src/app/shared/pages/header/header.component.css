@@ -4,18 +4,23 @@ nav,
 .nav-links {
   display: flex;
   font-family: Poppins;
+  
 }
 
 nav {
   justify-content: space-around;
   align-items: center;
   height: 15vh;
+  border: 2px solid black;
+  border-radius: 50% 20%/10% 40%;
+
 }
 
 .nav-links {
   gap: 2rem;
   list-style: none;
   font-size: 1.5rem;
+
 }
 
 a {

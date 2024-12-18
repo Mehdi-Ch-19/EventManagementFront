@@ -5,6 +5,7 @@ import { AuthService } from '../../../../core/auth/services/auth.service';
 import { TokenService } from '../../../../core/auth/services/token.service';
 import { Participant } from '../../../../core/models/Participant';
 import { ParticipantDto } from '../../../../core/models/PartticipantDto';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-myaccount',
@@ -36,4 +37,20 @@ export class MyaccountComponent implements OnInit {
     })
   }
 
+  logout(){
+    console.log("logoy")
+    Swal.fire({
+      title: 'Do you want to logout ?',
+      showDenyButton: true,
+      confirmButtonText: 'Logout',
+      denyButtonText: `Nop`,
+      customClass:{title:'titleclass'}
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.auth.logout()
+      } else if (result.isDenied) {
+      }
+    })
+  }
 }

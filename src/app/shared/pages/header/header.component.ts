@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +8,9 @@ import { Route, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit{
 
-  constructor(private route : Router){}
+  constructor(private route : Router , private activeroute : ActivatedRoute){}
   ngOnInit(): void {
+    console.log(this.route)
   }
   redirectogategory(){
       this.route.navigate(['category/Music'])

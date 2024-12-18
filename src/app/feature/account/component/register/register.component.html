@@ -6,8 +6,10 @@
                 <div class="formBx">
                   <form [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm)">
                     <h2>Sign Up</h2>
+                    <input type="text" name=""formControlName="name" placeholder="username" />
                     <input type="text" name=""formControlName="email" placeholder="email" />
                     <input type="password" name="" formControlName="password" placeholder="password" />
+                    <input type="text" name="" formControlName="addrese" placeholder="addrese" />
                     @if (emailExists) {
                       <h3 style="color: rgb(245, 33, 33);font-family: system-ui;">Email aleardy exists !! </h3>
                     }

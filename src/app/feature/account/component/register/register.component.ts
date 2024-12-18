@@ -29,6 +29,7 @@ export class RegisterComponent implements OnInit{
     if(this.type == "participant"){
        this.registerForm = this.fb.group({
         name:['',[Validators.required]],
+        addrese:[''],
         email:['',[Validators.required,Validators.email]],
         password:['',[Validators.required]]
     })
@@ -45,13 +46,14 @@ export class RegisterComponent implements OnInit{
   }
   onFormSubmit(form :FormGroup){
     const formData: any = form.value;
-    console.log(formData)
+    console.log("formdata" + formData)
     let user 
     if(this.type == "participant"){
       user  = new Participant()
       user.email = formData?.email
       user.name = formData?.name
       user.password = formData?.password
+      user.addrese = formData?.addrese
       user.type = this.type
     }else{
       user  = new Organizator()

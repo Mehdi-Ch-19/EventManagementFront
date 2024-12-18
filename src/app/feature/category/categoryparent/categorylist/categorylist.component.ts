@@ -20,8 +20,8 @@ export class CategorylistComponent implements OnInit,OnChanges, OnDestroy{
    this.events = []
   }
   ngOnInit(): void {
-    this.categoryname = this.activeroute.snapshot.params['name']
     this.activeroute.params.subscribe(p=>{
+      this.categoryname = p['name']
       this.events = []
       console.log(p)
       this.eventservice.getEventsByCategory(p['name']).subscribe(responce=>{

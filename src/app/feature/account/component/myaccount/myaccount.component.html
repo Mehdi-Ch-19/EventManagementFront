@@ -39,10 +39,9 @@
             </div>            
         </div>
         <div class="customer-info">
-          <h5>Particpant info</h5>
+          <p>Participant info</p>
             <app-info [particicpantInfo]="partcicipantInfo" (onParticipantUpdate)="updatePartcipant($event)"></app-info>
-            <button class="logout-btn">Logout</button>
-
+            <button class="logout-btn" (click)="logout()">Logout</button>
         </div>
     </div>
 </div>

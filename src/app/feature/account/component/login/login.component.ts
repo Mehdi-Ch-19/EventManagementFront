@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TypessharingService } from '../../services/typessharing.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent implements OnInit,OnChanges{
   type : string = ""
   loginForm! :FormGroup 
   credentialswrong = false
@@ -22,10 +22,18 @@ export class LoginComponent implements OnInit{
     })
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.typeservice.currentTypeLogin.subscribe(type=>{
+      this.type  = type
+    })
+    }
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email:['',[Validators.required,Validators.email]],
       password:['',[Validators.required]]
+    })
+    this.typeservice.currentTypeLogin.subscribe(type=>{
+      this.type  = type
     })
   }
   onFormSubmit(form :FormGroup){
@@ -33,6 +41,7 @@ export class LoginComponent implements OnInit{
     const formData: any = form.value;
     console.log(formData)
     this.auth.login({email:formData?.email,password:formData?.password,type:this.type }).subscribe(res=>{
+      console.log(this.type)
       if(this.type == "participant"){
         this.router.navigate(["/account/myaccount"])
       }

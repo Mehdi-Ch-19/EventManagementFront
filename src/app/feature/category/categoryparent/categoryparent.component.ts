@@ -15,10 +15,7 @@ export class CategoryparentComponent implements OnInit , OnChanges{
     console.log(changes)
   }
   ngOnInit(): void {
-    this.activeroute.firstChild?.params.subscribe(p=>{
-      console.log(p)
-          this.categoryname = p['name']
-      })  
+    
     }
 
 }

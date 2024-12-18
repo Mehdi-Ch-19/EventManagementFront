@@ -9,6 +9,7 @@ import {  RegisterDto } from '../models/RegisterDto';
 import { ResponceDto } from '../models/ResponceDto';
 import { jwtDecode } from 'jwt-decode';
 import { JwtResponce } from '../models/JwtResponce';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,11 @@ import { JwtResponce } from '../models/JwtResponce';
 export class AuthService {
 
    authenticationEndpoint = "/api/v1/auth/login"
+   logoutendpoint="/api/v1/auth/logout"
    registrationEndpoint = "/api/v1/auth/register"
      userDataSubject: BehaviorSubject<any> = new BehaviorSubject({});
    userData$: Observable<any> = this.userDataSubject.asObservable();
-  constructor(private http : HttpClient , private tokenservice : TokenService) { 
+  constructor(private http : HttpClient , private tokenservice : TokenService , private router:Router) { 
     
   }
 
@@ -48,6 +50,15 @@ export class AuthService {
       return false
     }
     return this.isAuthTokenValid(accessToken)
+  }
+  logout() {
+    this.http.post(environment.apiUrl+this.logoutendpoint,null).subscribe()
+    this.tokenservice.deleteAccessToken()
+    this.tokenservice.deleteUserId()
+    this.userDataSubject.next(null);
+    // Call http logout method for block refresh token
+
+    this.router.navigate(['account/login'])
   }
 
   isAuthTokenValid(token: string): boolean {

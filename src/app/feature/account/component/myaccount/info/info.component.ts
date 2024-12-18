@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Participant } from '../../../../../core/models/Participant';
 import { FormBuilder, FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { ParticipantService } from '../../../../../core/services/participant.service';
@@ -10,21 +10,24 @@ import { ParticipantDto } from '../../../../../core/models/PartticipantDto';
   templateUrl: './info.component.html',
   styleUrl: './info.component.css'
 })
-export class InfoComponent implements OnInit {
-  @Input() particicpantInfo!: ParticipantDto 
+export class InfoComponent implements OnInit ,OnChanges {
+  @Input() particicpantInfo: ParticipantDto = {}
   @Output() onParticipantUpdate:EventEmitter<ParticipantDto> = new EventEmitter()
-  participantForm!:UntypedFormGroup
+  participantForm!:FormGroup
 
   constructor(private participantService:ParticipantService , private fb : FormBuilder){
 
   }
-  ngOnInit(): void {
-    console.log("fornm info " + this.particicpantInfo.name)
+  ngOnChanges(changes: SimpleChanges): void {
+  
     this.participantForm = this.fb.group({
-      name:[this.particicpantInfo.name],
-      email : [this.particicpantInfo.email],
-      adresse:[this.particicpantInfo.adresse]
+      name:[this.particicpantInfo?.name],
+      email : [this.particicpantInfo?.email],
+      adresse:[this.particicpantInfo?.addrese]
     })
+  }
+  ngOnInit(): void {
+     
   }
 
   onFormSubmit(form:FormGroup){
@@ -39,7 +42,7 @@ export class InfoComponent implements OnInit {
       if (result.isConfirmed) {
         let p :ParticipantDto= {
           name:this.participantForm.value?.name,
-          adresse:this.participantForm.value?.adresee,
+          addrese:this.participantForm.value?.adresee,
           email:this.participantForm.value?.email,
         }
         this.onParticipantUpdate.emit(p)
