@@ -19,6 +19,8 @@ export class EventService {
   getEventsByCategory(catname : string):Observable<Responce>{
     let params = new HttpParams().set('type', catname);
     return this.http.get<Responce>(environment.apiUrl+this.eventendpoint+"/category",{params:params})
-
+  }
+  deleteEvent(id:number){
+    return this.http.delete(this.eventendpoint+this.eventendpoint+"/"+id)
   }
 }

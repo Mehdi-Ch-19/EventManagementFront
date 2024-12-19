@@ -1,0 +1,36 @@
+<div class="conatiner">
+    <h2 style="margin-bottom: 30px;">Events</h2>
+    <button class="add-product" (click)="redirectAdd()">Add new Events</button>
+    <div class="products">
+        
+        <table>
+            <thead>
+                <td>Title</td>
+                <td>date</td>
+                <td>location</td>
+                <td>Start Time</td>
+                <td>End Time</td>
+                <td>Participant </td>
+            </thead>
+           <tbody>
+            <tr  *ngFor="let event of events , let i = index">
+                <td  ><h5>{{event.title}}</h5></td>
+                <td  ><h5>{{event.date}}</h5></td>
+                <td  ><h5>{{event.location}}</h5></td>
+                <td  ><h5>{{event.EventStartTime}}</h5></td>
+                <td  ><h5>{{event.EventEndTime}}</h5></td>
+                <td  ><h5>{{event.numOfPartcipant}}</h5></td>
+                <td> <button (click)="edititem(i)" class="btn-edit" style="padding: -80px;">
+                    <i class="bx bx-edit"></i>
+                    Edit</button>
+                </td>
+                <button class="btn-delete" (click)="deleteProdcut(i)">
+                    <i class="bx bx-trash-alt"></i>
+                    Delete
+                </button>
+            </tr>
+           </tbody>
+        </table>
+        
+    </div>
+</div>

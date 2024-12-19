@@ -58,7 +58,7 @@ export class AuthService {
     this.userDataSubject.next(null);
     // Call http logout method for block refresh token
 
-    this.router.navigate(['account/login'])
+    
   }
 
   isAuthTokenValid(token: string): boolean {

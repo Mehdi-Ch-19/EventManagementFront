@@ -6,6 +6,7 @@ import { TokenService } from '../../../../core/auth/services/token.service';
 import { Participant } from '../../../../core/models/Participant';
 import { ParticipantDto } from '../../../../core/models/PartticipantDto';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-myaccount',
@@ -16,7 +17,7 @@ export class MyaccountComponent implements OnInit {
   events :EventParticipant[] = []
   partcicipantInfo! : ParticipantDto 
   id!:number
-  constructor(private participantService : ParticipantService , private auth:AuthService,private tokenservice:TokenService){
+  constructor(private participantService : ParticipantService,private router :Router , private auth:AuthService,private tokenservice:TokenService){
 
   }
   ngOnInit(): void {
@@ -49,6 +50,7 @@ export class MyaccountComponent implements OnInit {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         this.auth.logout()
+        this.router.navigate(['account/type'])
       } else if (result.isDenied) {
       }
     })

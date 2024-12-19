@@ -44,6 +44,8 @@ export class LoginComponent implements OnInit,OnChanges{
       console.log(this.type)
       if(this.type == "participant"){
         this.router.navigate(["/account/myaccount"])
+      }else{
+         this.router.navigate(['/dashboard']) 
       }
     },error=>{
       this.credentialswrong = true
